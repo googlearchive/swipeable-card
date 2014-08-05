@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+  <title>swipeable-card</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <script src="../platform/platform.js"></script>
+  
+  <link rel="import" href="swipeable-card.html">
+
+  <style>
+  
+    #cards {
+      margin: 0 auto;
+      background: #eee;
+      overflow: auto;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+    }
+    
+    swipeable-card {
+      height: 200px;
+      width: 240px;
+      margin: 20px auto;
+      padding: 30px;
+    }
+      
+  </style>
+
+</head>
+<body unresolved>
+
+  <div id="cards">
+  
+    <swipeable-card>Swipe Me!</swipeable-card>
+    <swipeable-card>Swipe Me!</swipeable-card>
+    <swipeable-card disableSwipe></swipeable-card>
+    <swipeable-card>Swipe Me!</swipeable-card>
+    <swipeable-card disableSwipe></swipeable-card>
+    
+  </div>
+  
+  <script>
+    document.querySelector('#cards').addEventListener('swipeable-card-swipe-away', function(e) {
+      e.target.parentNode.removeChild(e.target);
+    });
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "name": "swipeable-card",
+  "private": true,
+  "dependencies": {
+    "polymer": "Polymer/polymer#master"
+  }
+}
