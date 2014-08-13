@@ -18,7 +18,7 @@ A card that can be swiped to the left or right to move it out of the way.
 
 <link rel="stylesheet" href="swipeable-card.css" shim-shadowdom>
 
-<polymer-element name="swipeable-card" attributes="disableSwipe" touch-action="pan-y">
+<polymer-element name="swipeable-card" attributes="disableSwipe">
     
 <script>
 
@@ -47,7 +47,7 @@ A card that can be swiped to the left or right to move it out of the way.
       webkitTransitionEnd: 'transitionEnd',
       transitionend: 'transitionEnd',
       trackstart: 'trackStart',
-      track: 'track',
+      trackx: 'trackx',
       trackend: 'trackEnd'
     },
     
@@ -63,7 +63,7 @@ A card that can be swiped to the left or right to move it out of the way.
       var translate = 'translate3d(' + x + 'px,' + 
           (this.noCurve ? 0 : y) + 'px,0)';
       var rotate = 'rotate(' + deg + 'deg)';
-      s.transform = s.webkitTransform = s.mozTransform = s.msTransform = 
+      s.transform = s.webkitTransform =
           translate + (this.noCurve ? '' : ' ' + rotate);
     },
     
@@ -75,7 +75,7 @@ A card that can be swiped to the left or right to move it out of the way.
       }
     },
     
-    track: function(e) {
+    trackx: function(e) {
       if (!this.disableSwipe) {
         this.animate(e.dx);
       }
