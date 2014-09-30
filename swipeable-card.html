@@ -91,6 +91,7 @@ A card that can be swiped to the left or right to move it out of the way.
     swipeEnd: function(away, dir) {
       this.classList.remove('dragging');
       this.away = away;
+      this.direction = dir ? 'right' : 'left';
       if (away) {
         var w = this._w * this.widthRatio;
         this.animate(dir ? w : -w);
@@ -101,7 +102,7 @@ A card that can be swiped to the left or right to move it out of the way.
     
     transitionEnd: function(e) {
       if (this.away) {
-        this.fire('swipeable-card-swipe-away');
+        this.fire('swipeable-card-swipe-away', {direction: this.direction});
       }
       e.stopPropagation();
     }
