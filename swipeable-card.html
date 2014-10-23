@@ -18,7 +18,7 @@ A card that can be swiped to the left or right to move it out of the way.
 
 <link rel="stylesheet" href="swipeable-card.css" shim-shadowdom>
 
-<polymer-element name="swipeable-card" attributes="disableSwipe">
+<polymer-element name="swipeable-card" attributes="disableSwipe swiped">
     
 <script>
 
@@ -38,6 +38,16 @@ A card that can be swiped to the left or right to move it out of the way.
      * @default false
      */
     disableSwipe: false,
+
+    /**
+     * Becomes `true` once the car has been swiped.  Set
+     * back to `false` to reset the swipe state.
+     *
+     * @attribute swiped
+     * @type boolean
+     * @default false
+     */
+    swiped: false,
     
     noCurve: false,
     offsetRatio: 0.2,
@@ -101,10 +111,20 @@ A card that can be swiped to the left or right to move it out of the way.
     },
     
     transitionEnd: function(e) {
-      if (this.away) {
+      if (this.away && e.propertyName == 'opacity') {
         this.fire('swipeable-card-swipe-away', {direction: this.direction});
+        this.swiped = true;
       }
       e.stopPropagation();
+    },
+
+    swipedChanged: function() {
+      if (this.away != this.swiped) {
+        this.away = this.swiped;
+        this.classList.add('dragging');
+        this._w = this.offsetWidth;
+        this.animate(this.swiped ? this._w * this.widthRatio: 0);
+      }
     }
     
   });
