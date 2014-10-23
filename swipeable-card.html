@@ -40,7 +40,7 @@ A card that can be swiped to the left or right to move it out of the way.
     disableSwipe: false,
 
     /**
-     * Becomes `true` once the car has been swiped.  Set
+     * Becomes `true` once the card has been swiped.  Set
      * back to `false` to reset the swipe state.
      *
      * @attribute swiped
@@ -123,7 +123,7 @@ A card that can be swiped to the left or right to move it out of the way.
         this.away = this.swiped;
         this.classList.add('dragging');
         this._w = this.offsetWidth;
-        this.animate(this.swiped ? this._w * this.widthRatio: 0);
+        this.animate(this.swiped ? this._w * this.widthRatio : 0);
       }
     }
     
